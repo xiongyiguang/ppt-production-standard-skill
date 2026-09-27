@@ -1,0 +1,4 @@
+interface:
+  display_name: "PPT 制作规范"
+  short_description: "按权威模板、原生文字与最高质量原图制作并验收 PowerPoint。"
+  default_prompt: "使用 $ppt-production-standard 先解析用户指定或品牌主模板并测量内容页骨架；案例说明、指标、标签和结论用 PPT 原生文字重建，图片优先提取项目/PPTX/PDF 原图，缺失时从源 PDF/PPT 高分辨率渲染后精确裁切；完成结构审计、清晰度检查和 PowerPoint 全页渲染验收。"

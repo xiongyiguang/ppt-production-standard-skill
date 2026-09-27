@@ -1,0 +1,10 @@
+# Local documents contain customer material and visual QA artifacts.
+docs/*
+!docs/github-readme.md
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+*.log
+~$*
