@@ -19,7 +19,7 @@
 1. Resolve one authoritative template as the destination visual system, even when the source deck uses another master.
 2. Audit before editing:
 
-   ```powershell
+   ```bash
    python scripts/audit_pptx.py "input.pptx"
    ```
 
@@ -59,7 +59,7 @@ Structural compliance is not visual-design acceptance. Separately inspect hierar
 
 Use the bundled checker before and after edits:
 
-```powershell
+```bash
 python scripts/audit_pptx.py "deck.pptx" --json
 python scripts/audit_pptx.py "richinfo-deck.pptx" --require-template "assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx" --require-layout "2_内容1" --content-slides "2-8" --require-color-scheme "彩讯科技" --strict
 python scripts/audit_pptx.py "china-mobile-deck.pptx" --require-template "assets/新建PPT模板-中国移动主题色规范修正版.pptx" --require-layout "内容页1" --content-slides "2-8" --require-color-scheme "中国移动" --strict
@@ -72,8 +72,8 @@ Replace the illustrative `--content-slides "2-8"` range with the actual ordinary
 1. Confirm the output opens as a valid presentation and preserves the expected slide count, text, objects, and geometry.
 2. Extract text to check missing, duplicated, or leftover content.
 3. Run the bundled audit with `--require-template`. Confirm protected template parts are unchanged, the resolved content layout exists, and every ordinary content slide is bound to it.
-4. Render every changed slide in Microsoft PowerPoint. Use `scripts/render_pptx_powerpoint.ps1` when an automated export is needed; render into a new or empty directory so stale previews cannot be mistaken for current output.
-5. Inspect overflow, clipping, overlap, spacing, alignment, contrast, image distortion, and unexpected theme-color changes.
+4. Render every changed slide in Microsoft PowerPoint. Use the actually installed PowerPoint: a native Mac app or a Windows VM. Run `.ps1` COM tools inside Windows only; verify the VM command bridge and shared paths first, or use the application UI. Preserve other open user presentations. Export into a new directory so stale previews cannot be mistaken for current output.
+5. Inspect overflow, clipping, overlap, spacing, alignment, contrast, image distortion, and unexpected theme-color changes. Separately execute the thumbnail and reading-size design review in `content-led-design.md`; record concrete visual findings and fixes. Structural success cannot clear an unresolved design defect.
 6. Use an independent visual-review pass when available, following the general `pptx` skill.
 7. If a defect is found, correct it and verify the affected slides again before declaring the deck ready. A clean result does not require an artificial edit cycle.
 8. Confirm every outer section or module frame uses straight corners. Inner cards, labels, title bars, backgrounds and process nodes also default to straight corners. Rounded exceptions require a clear semantic reason or user request; checking only the outer frame is insufficient. Preserve authoritative template geometry and avoid arbitrary numeric quotas.

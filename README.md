@@ -75,7 +75,7 @@
 ## 环境与验证边界
 
 - Python辅助脚本按实际工具需要配置 `python-pptx`、`lxml`、Pillow等依赖；具体参数先查看脚本帮助或对应参考文档。
-- macOS下使用可用的演示文稿制作工具，并在 Mac PowerPoint 中完成需要实际应用确认的检查。
+- macOS 下使用可用的演示文稿制作工具；实际应用检查可在 Mac PowerPoint 或 Windows 虚拟机内的 PowerPoint 完成，以实际安装环境为准。只有虚拟机内安装 Office 时，在虚拟机内执行 COM 检查。
 - `render_pptx_powerpoint.ps1`、`measure_text_layout.ps1` 依赖 Windows PowerPoint COM，不能直接在 Mac 上执行；安装 PowerShell 也不会提供 COM 能力。
 - 使用前检查字体是否可用。第三方预览可作辅助证据，不能直接等同于 PowerPoint 实际显示结果。
 - 方法文档及静态检查不代表所有画法已通过真实业务、编辑性和视觉验收；每次交付仍须按任务验证。

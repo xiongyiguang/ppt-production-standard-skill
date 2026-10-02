@@ -11,7 +11,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 
 - Python 结构审计、文字扫描和 SVG 工具可在 macOS 使用；先通过 `load_workspace_dependencies` 获取应用捆绑的 Python/依赖，不假定系统 `python` 或 `python3` 已配置。
 - `render_pptx_powerpoint.ps1`、`measure_text_layout.ps1` 是 Windows PowerPoint COM 工具，不在 Mac 上执行，也不以安装 PowerShell 视作已获得 COM 支持。
-- PPTX 制作与预览配合当前可用的 `presentations` 技能。第三方渲染只能作为辅助证据；要求的 PowerPoint 实际打开、自动折行、行距、组合操作和全页视觉验收仍须在安装后的 Mac PowerPoint 中验证。缺少应用时明确待验收，不降低原标准。
+- PPTX 制作与预览配合当前可用的 `presentations` 技能。第三方渲染只能作为辅助证据；要求的 PowerPoint 实际打开、自动折行、行距、组合操作和全页视觉验收须在实际安装的 PowerPoint 中验证：可用 Mac 原生版本，也可用 Windows 虚拟机内版本。先核实安装位置、共享路径和自动化能力，不假定 macOS 已安装 Office。缺少应用时明确待验收，不降低原标准。
 - 模板、Logo、主题与固定几何保留原样。先核对 Mac 字体可用性；微软雅黑等字体缺失时说明影响并确认替代，不擅自更换或从旧 Windows 复制系统字体。
 
 ## 模板与范围
@@ -23,7 +23,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 
 ## 规范按需读取
 
-- 新建或整体改版内容页：按 [内容驱动的设计判断](references/content-led-design.md) 明确本页判断、关系、重点与条件后自由构图。
+- 新建或整体改版内容页：按 [内容驱动的设计判断](references/content-led-design.md) 明确本页判断、关系、重点与条件后自由构图，并执行其中的缩略图与实际阅读尺寸设计复核。
 - 已明确内容关系、需要具体画法时：按 [12类关系表达方法](references/relationship-patterns.md) 的选型表只读相关小节，参考结构草图、变体、原生实现和语义验收；不把方法当强制模板。
 - 新建/整体规范化：读 [完整规范](references/ppt-production-standard.md) 的 1–3 节，再按正在处理的文字、形状、图表等对象读取对应章节；这些是专业要求，不要求先整读所有模式。
 - 新建、修订、只读审查、审计和渲染：读 [production-modes](references/production-modes.md) 对应模式及 Required QA。
@@ -67,4 +67,4 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 - `scripts/embed_svg_icons.py`: embeds mapped icon files into SVG source pages.
 - `scripts/extract_icon_components.py`: extracts separated components from a generated white-background icon sheet; use only with manual semantic-count review.
 - `scripts/verify_pptx_text.py`: scans text-bearing PPTX parts for encoding damage and optional placeholder residue.
-- `scripts/render_pptx_powerpoint.ps1`: retained Windows COM source only; inactive on this Mac. Use Mac PowerPoint UI for actual application export and the available presentations skill for supplementary previews.
+- `scripts/render_pptx_powerpoint.ps1`: Windows PowerPoint COM exporter; run inside Windows (including an available VM), never directly on macOS. Resolve the actual installed Office environment before choosing automation or UI export.

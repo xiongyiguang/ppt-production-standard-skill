@@ -5,6 +5,8 @@ param(
     [int] $Height = 1080
 )
 
+$ErrorActionPreference = 'Stop'
+
 $inputPath = [System.IO.Path]::GetFullPath($InputPptx)
 $outputPath = [System.IO.Path]::GetFullPath($OutputDir)
 if (-not [System.IO.File]::Exists($inputPath)) {
@@ -19,6 +21,9 @@ $powerPoint = $null
 $presentation = $null
 try {
     $powerPoint = New-Object -ComObject PowerPoint.Application
+    foreach ($openDeck in $powerPoint.Presentations) {
+        if ($openDeck.FullName -eq $inputPath) { throw 'Input is already open; render a saved working copy.' }
+    }
     $presentation = $powerPoint.Presentations.Open($inputPath, $true, $false, $false)
     foreach ($slide in $presentation.Slides) {
         $file = Join-Path $outputPath ("slide-{0}.png" -f $slide.SlideIndex)
@@ -31,7 +36,7 @@ try {
 }
 finally {
     if ($presentation -ne $null) { $presentation.Close() }
-    if ($powerPoint -ne $null) { $powerPoint.Quit() }
+    # Do not Quit: COM may attach to a user session containing other decks.
     if ($presentation -ne $null) { [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($presentation) }
     if ($powerPoint -ne $null) { [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject($powerPoint) }
     [GC]::Collect()
