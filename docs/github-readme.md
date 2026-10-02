@@ -11,13 +11,13 @@ PowerPoint 制作、改版与审查的规范技能。入口为根目录 `SKILL.m
 
 捆绑模板包括彩讯2026、中国移动通用、中国移动创新研究院，以及用于历史兼容的旧彩讯模板。模板适用条件见 `SKILL.md`。
 
-此前75项候选结构库已退出使用；空登记及停用入口仅防止旧引用继续生成，不能作为页面候选。基础绘图函数保留给已有项目复现使用。
+内容关系明确后，按 `references/relationship-patterns.md` 查阅12类关系表达方法；根据实际内容构图，不使用固定样页库。
 
 ## 安装与验证
 
 将此目录作为 `ppt-production-standard` 放入本机技能目录。按实际任务选择可用的 PPT 制作工具，相关 Python 工具可能需要 `python-pptx`、`lxml` 和 Pillow；PowerPoint 渲染及实际文字测量需要 Windows 与 Microsoft PowerPoint。
 
-可运行 `scripts/test_layout_library.py` 检查旧入口停用和开放箭头端点，运行 `scripts/test_editing_quality.py` 检查编辑质量审计逻辑。具体文件验收按 `references/production-modes.md` 执行。静态检查不替代渲染和视觉验收。
+可运行 `scripts/test_editing_quality.py` 检查编辑质量审计逻辑。具体文件验收按 `references/production-modes.md` 执行。静态检查不替代渲染和视觉验收。
 
 ## 仓库边界
 
