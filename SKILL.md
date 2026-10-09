@@ -15,7 +15,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 - 正文页标题明确包含“当前板块 - 本页主题”；标题下概述默认按实际阅读尺寸形成两行，交代核心判断与具体安排。封面、目录过渡、结束页除外；复杂内容最多三行。详见完整规范3.3。
 - 首页和目录过渡必须遵循当前权威模板：已登记中国移动V2首页居中、彩讯2026首页左对齐；目录板块之间插入对应过渡页，突出当前板块。不得把一次项目的四板块数量固化为所有方案。模板版本与示例边界见[模板登记](references/template-profiles.md)。
 - 分层架构必须同时表达具体模块、上下层调用或数据关系、外部接口和相关横向治理，不能只列空泛层名；缺乏依据的组件标为待确认，不能为增加信息量虚构技术栈、资源或承诺。详见完整规范3.6。
-- 新建或整体优化必须选取重点页加载imagegen技能并生成版式参考，通常覆盖业务流程、需求/职责或架构中的2—3页；小稿可只选一页。借鉴构图、阅读路径和主次后原生重构，减少表格感与装饰图标。局部改字不触发整稿制图，局部重构只研究该页。详见[内容设计](references/content-led-design.md)。
+- 新建或整体优化必须选取重点页加载imagegen技能并生成版式参考，通常覆盖业务流程、需求/职责或架构中的2—3页；小稿可只选一页。按[版式研究与原生重构](references/imagegen-layout-reconstruction.md)保留有效的主体布局、区域比例、配色作用及语义图标，去除错误关系与无作用装饰，再制作可编辑对象。局部改字不触发整稿制图，局部重构只研究授权页。
 - 每个授权正文页必须先判断主要关系、再选主体结构，并记录选型理由；采用表格须说明核对对象、共同字段或对应维度及逐项阅读需求。“名称＋说明”、缺少数值或制作方便均不足以支持表格选型。流程、层级、协同等关系仅被铺成行列而未表达时判为待改；等大卡片和无边线网格按同一标准检查。判据、例外及逐页记录见[内容设计](references/content-led-design.md)。
 - 复核全稿表格与重复结构：保留确需比较、映射和核对的页面；重复结构例外须注明页码、共同维度与逐页适用理由。重点页研究不替代其他页选型；只有换色、删边线、换列数不能算结构改善。模块识别需要图标时采用轻量开放布局，图标数量服从当前要求。
 - 整稿全部界面截图必须采用同一线条母样；局部任务只统一授权范围内截图：默认1.25磅、accent1主题主色至透明的线性渐变。用户已有明确截图母样时先提取并统一传播；照片、Logo、图标不套用截图线条。母样与验收见完整规范9.4.4和`assets/ui-screenshot-border.xml`。
@@ -44,9 +44,23 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 - 从截图、旧页、PDF 重建或修复素材：读 [reference-slide-reconstruction](references/reference-slide-reconstruction.md)，并执行原生对象和素材溯源检查。
 - 原生箭头/连接器：读完整规范 7.7。默认开放式端点（OOXML `arrow`），禁止用实心三角端点（`triangle`）代替；先核对生成工具的实际端点，再统一全稿母样，在100%及50%下检查同色、同视觉线宽和连续性。
 - 新建或修改原生文字、形状时读 [editing-quality](references/editing-quality.md)：统一文字属性、检查实际多行行距与组合限制；交付前运行其中的只读检查，不以结构审计通过代替编辑性验收。
-- 用户要求局部视觉润色：读 [local-visual-polish](references/local-visual-polish.md)；确需图片生成才加载 imagegen。
+- 用户要求借鉴生成参考图的布局、主体大小、配色或图标，或重点页需要改进关系表达：读 [imagegen-layout-reconstruction](references/imagegen-layout-reconstruction.md)，默认版式研究后原生重构；用户已认可的有效构图可充分借鉴，语义图标按识别作用保留。
+- 用户仅要求局部视觉润色：读 [local-visual-polish](references/local-visual-polish.md)；确需图片生成才加载 imagegen。
 
-- 用户明确要求将PPT主体文字、表格或结构图通过imagegen制成替换图片，或连续发送页面截图要求同类制图时，读 [imagegen-content-replacement](references/imagegen-content-replacement.md)。此模式可交付独立图片，不要求回填PPT；不能把仅做局部插画的原生文字规则误用于已授权的主体位图制作。
+- 用户明确要求将PPT主体文字、表格或结构图通过imagegen制成替换图片，或连续发送页面截图要求同类制图时，读 [imagegen-content-replacement](references/imagegen-content-replacement.md)。此模式可交付独立图片，不要求回填PPT；“参考图很好”“按这个布局画下来”按当前可编辑目标走原生重构，明确要求图片时才进入主体位图交付。不能用原生默认否定用户明确选择的位图。
+
+## 交付后提示两个优化选择
+
+每次新建、扩页或修订后交付PPT文件，在最终交付说明末尾简短提醒以下两个可选方式，始终保持相同顺序和通俗名称。用户无需记住技能或流程名称。仅审查、讨论或尚未产出PPT时不套用“已生成”提醒；用户明确不要后续建议时按要求省略。
+
+1. **优化可编辑版式（推荐）**：先生成构图参考，再用可编辑文字、图形重构。对应[版式研究与原生重构](references/imagegen-layout-reconstruction.md)。
+2. **生成图片版式**：将指定页面的主体内容生成图片，供回填；图片内部文字不能逐项编辑。对应[主体图片替换](references/imagegen-content-replacement.md)，只在用户明确要求时回填PPT。
+
+可直接这样提醒：“还可以继续选：①优化可编辑版式（推荐）；②生成图片版式。前者保留文字和图形可编辑，后者交付图片、内部文字不能逐项编辑。直接说‘选第一个，优化第X页’或‘选第二个，先给图片’即可。”按实际交付状态调整开头，不把未验收稿说成已验收。
+
+“选第一个/方案一/可编辑优化”承接当前提醒的第一项；“选第二个/方案二/图片版式/先给图片”承接第二项，用户最新明确描述优先。页面范围沿用当前已约定范围；如果没有页码，可先检查当前稿并推荐重点页，“挑几页优化”授权自行选页。只有范围确实影响修改结果且无法推断时才简短确认，不让用户重新背流程名称。
+
+提醒是可选后续动作，不是交付门槛。完成已授权工作并交付文件后提醒，不自动再生图、修改或启动另一轮，也不因等待选择而拖住交付。
 
 ## Non-negotiable rules
 
@@ -70,7 +84,8 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 
 ## Resources
 
-- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.9 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
+- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.11 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
+- [版式研究与原生重构](references/imagegen-layout-reconstruction.md)：重点页构图探索、保留比例与配色、语义图标、原生实施和局部保护验收。
 - [references/reference-slide-reconstruction.md](references/reference-slide-reconstruction.md): conditional workflow for screenshots, flattened slides, SVG sources, icons, and generated visual assets.
 - [assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx](assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx): primary 彩讯 2026 template; ordinary content layout is `2_内容1` (`slideLayout3`).
 - [assets/新建PPT模板-彩讯科技主题色规范修正版V2.pptx](assets/新建PPT模板-彩讯科技主题色规范修正版V2.pptx): legacy 彩讯 V2 baseline; use only for legacy or explicitly requested work; ordinary content layout is `内容页1` (`slideLayout3`).

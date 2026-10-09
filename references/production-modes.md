@@ -11,7 +11,7 @@
 3. Preserve the selected template's master, layouts, theme, slide size, logo, fixed page furniture, and all master decorations byte-for-byte. Do not open Slide Master view to “normalize” or restyle them.
 4. Bind every ordinary content slide to the content layout measured from the resolved template. The primary 彩讯 2026 template uses `2_内容1`; the 中国移动 and legacy 彩讯 V2 templates use `内容页1`. Use title, section, blank, or ending layouts only for their corresponding non-content slide roles.
 5. Treat the bundled template's single sample slide as a structure and theme reference, not as a mandatory page design. Its existing straight outer containers and rounded inner shapes are preserved template examples, not permission to default new inner shapes to rounded corners. Preserve that sample slide's original shape geometry, including its 14 rounded rectangles. If the final deck does not need the sample page, remove or replace the whole page rather than restyling the template example.
-6. Build a slide-by-slide content map before editing the file. Review every page for concrete content, semantic hierarchy and effective information density. Include brand-matched cover, chapter transition pages and section-aware body titles. Select key pages for actual imagegen layout exploration under content-led-design.md, then reconstruct native objects with fewer decorative icons.
+6. Build a slide-by-slide content map before editing the file. Review every page for concrete content, semantic hierarchy and effective information density. Include brand-matched cover, chapter transition pages and section-aware body titles. Select key pages for actual imagegen layout exploration under content-led-design.md, then follow imagegen-layout-reconstruction.md to retain useful proportions, color roles and semantic icons while rebuilding native objects.
 7. Apply the complete reference standard, then run the audit and rendered QA.
 
 ### Normalize or revise an existing presentation
@@ -28,6 +28,10 @@
 5. Correct the requested scope across all repeated instances, not only the first visible example.
 6. Save as `原文件名-规范修正版.pptx` by default.
 7. Re-run the audit, render the affected slides, compare them with the original, fix problems, and verify again.
+
+### Study a layout and reconstruct native objects
+
+For key-page redesign or an approved generated reference, read [imagegen-layout-reconstruction](imagegen-layout-reconstruction.md). Preserve the current editable delivery target, confirmed content and latest saved deck; use the reference for composition, subject scale, color roles and useful semantic icons. Retain explicitly requested bitmap delivery under the separate replacement mode. Typo fixes do not trigger image generation or full-deck redesign.
 
 ### Optional local visual polish
 
@@ -84,4 +88,6 @@ Replace the illustrative `--content-slides "2-8"` range with the actual ordinary
 13. Apply reference sections 3.3–3.5 and the per-slide decision/acceptance record in [content-led-design](content-led-design.md). Check that tables serve actual comparison or mapping and that diagrams visibly carry their main relationships. Report concrete unresolved objects as pending redesign, missing render evidence as pending acceptance, and document repeated-structure exceptions by page. Structural audit cannot certify semantic selection or clear these statuses. After expanding an overview, reflow and render the content below it; do not squeeze shapes or reduce text to preserve the old content height.
 14. A ZIP/XML or library-open pass does not establish PowerPoint compatibility. Require actual opening without a repair prompt and inspect the exported pages, especially native tables and edited relationships. If PowerPoint repairs the file, inspect the repair log and correct the cause; do not accept a repaired deck with removed objects as a successful output.
 
-15. Execute the mandatory gates in SKILL.md: section-aware titles, cover alignment by authoritative brand template, chapter transitions, two-line body overviews, semantic name/description hierarchy, concrete architecture modules and relations, recorded imagegen layout research, reduced decorative icons and the consistent UI-screenshot gradient outline. Review only the authorized scope for local edits; report pending items instead of claiming the whole deck passed.
+15. Execute the mandatory gates in SKILL.md: section-aware titles, cover alignment by authoritative brand template, chapter transitions, two-line body overviews, semantic name/description hierarchy, concrete architecture modules and relations, recorded imagegen layout research and native reconstruction retaining useful proportions, color roles and semantic icons, plus the consistent UI-screenshot gradient outline. Review only the authorized scope for local edits; report pending items instead of claiming the whole deck passed.
+
+16. After delivering a newly created, extended or revised PPT file, follow [the two optional follow-up choices](../SKILL.md#交付后提示两个优化选择) using plain labels and explaining editability. This optional reminder does not block delivery or start another workflow; omit it when the user declines follow-up suggestions.
