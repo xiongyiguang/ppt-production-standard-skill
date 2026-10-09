@@ -16,8 +16,8 @@
 相对脚本路径以本Skill根为基准。输出放当前项目 `docs/.staging/`，使用新文件名。
 
 1. `python scripts/audit_editing_quality.py input.pptx --json`：按演示顺序列出页、对象ID/名称、禁止组合锁、占位/表格例外、明确换行的行距错误和待测文字。此检查不改文件。
-2. Windows有PowerPoint时：`pwsh -File scripts/measure_text_layout.ps1 -InputPptx input.pptx -OutputJson layout.json`。只读打开，不保存源稿、不关闭用户的其他演示；递归测量组内文字及表格单元格，导出实际行数和有效段落间距。脚本不会替你执行组合操作。
-3. `python scripts/audit_editing_quality.py input.pptx --layout-evidence layout.json --strict --json`。证据必须匹配当前文件SHA256；改动后重新测量。`--slides 1,3-5`可仅检查授权页（按演示顺序）。退出0表示本检查无错误且无待测项，2表示发现问题或仍待测，3表示输入/证据无效。
+2. 按实际安装环境选择Mac PowerPoint或Windows虚拟机内的PowerPoint，使用独立副本检查自动折行、有效行距、组内文字及表格单元格。Windows COM测量脚本只在Windows内执行，递归导出真实行数和有效段距，不保存源稿、不关闭用户其他演示；Mac端没有等效测量时记录人工检查，不伪造`layout.json`。
+3. 仅已有符合脚本字段要求的真实测量证据时，运行 `python scripts/audit_editing_quality.py input.pptx --layout-evidence layout.json --strict --json`。证据必须匹配当前文件SHA256；改动后重新测量。`--slides 1,3-5`可仅检查授权页（按演示顺序）。退出0表示本检查无错误且无待测项，2表示发现问题或仍待测，3表示输入/证据无效。
 
 未测量自动折行、继承行距或未覆盖对象时列为待核验，不能声称通过。没有PowerPoint时可用实际打开后的逐对象人工检查补足，并明确检查范围；静态XML不能证明真实显示行数。旧 `audit_pptx.py` 仍负责模板、字体、颜色等检查，两者互补。
 
@@ -31,4 +31,4 @@
 
 ## 回归
 
-运行 `python scripts/test_editing_quality.py`。覆盖显式多行、自动折行证据、单行、继承未知、组内锁、表格例外、过期证据与实际演示顺序。测试不会改写演示文稿。
+本项目未包含 `test_editing_quality.py`，不得把它当作可运行或已通过的回归。修改审计器时须用独立测试稿验证显式多行、自动折行证据、单行、继承未知、组内锁、表格例外、过期证据与实际演示顺序，并记录实际结果。

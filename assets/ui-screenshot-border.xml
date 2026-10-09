@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<a:ln xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" w="15875"><a:gradFill flip="none" rotWithShape="1"><a:gsLst><a:gs pos="0"><a:schemeClr val="accent1"/></a:gs><a:gs pos="100000"><a:schemeClr val="accent1"><a:alpha val="0"/></a:schemeClr></a:gs></a:gsLst><a:lin ang="5400000" scaled="1"/><a:tileRect/></a:gradFill></a:ln>
