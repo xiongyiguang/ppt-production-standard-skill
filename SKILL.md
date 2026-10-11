@@ -11,13 +11,14 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 
 下次调用本技能即执行以下规则。新建或整体优化逐页执行；局部修改仅执行授权页，审查模式只报告。不得从旧生成脚本恢复用户删页或覆盖其最新保存稿。
 
-- 逐页复查表达、信息完整性和版式，必须提升专业度与有效信息密度；不能以缩字、堆字或添饰品充数。业务流程、分层架构及重复模块页是重点复核对象，按[内容设计](references/content-led-design.md)执行。
+- 逐页复查表达、信息完整性和版式，必须提升专业度与有效信息密度；正文默认采用信息较充分的方案交流密度，不因追求简洁删掉已确认细节；按语义层级适当减小字号，不能用重复文字或无依据内容填空。密度、字号与轻量分区执行完整规范3.5A、5.3。业务流程、分层架构及重复模块页是重点复核对象，按[内容设计](references/content-led-design.md)执行。
 - 正文页标题明确包含“当前板块 - 本页主题”；标题下概述默认按实际阅读尺寸形成两行，交代核心判断与具体安排。封面、目录过渡、结束页除外；复杂内容最多三行。详见完整规范3.3。
 - 首页和目录过渡必须遵循当前权威模板：已登记中国移动V2首页居中、彩讯2026首页左对齐；目录板块之间插入对应过渡页，突出当前板块。不得把一次项目的四板块数量固化为所有方案。模板版本与示例边界见[模板登记](references/template-profiles.md)。
-- 分层架构必须同时表达具体模块、上下层调用或数据关系、外部接口和相关横向治理，不能只列空泛层名；缺乏依据的组件标为待确认，不能为增加信息量虚构技术栈、资源或承诺。详见完整规范3.6。
+- 分层架构必须同时表达具体模块、上下层调用或数据关系、外部接口和相关横向治理，不能只列空泛层名；缺乏依据的组件标为待确认，不能为增加信息量虚构技术栈、资源或承诺。每层最外层分组容器默认用主题色细实线直角外框，区隔层级并保留清楚的调用路径，详见完整规范3.6。
 - 新建或整体优化必须选取重点页加载imagegen技能并生成版式参考，通常覆盖业务流程、需求/职责或架构中的2—3页；小稿可只选一页。按[版式研究与原生重构](references/imagegen-layout-reconstruction.md)保留有效的主体布局、区域比例、配色作用及语义图标，去除错误关系与无作用装饰，再制作可编辑对象。局部改字不触发整稿制图，局部重构只研究授权页。
 - 每个授权正文页必须先判断主要关系、再选主体结构，并记录选型理由；采用表格须说明核对对象、共同字段或对应维度及逐项阅读需求。“名称＋说明”、缺少数值或制作方便均不足以支持表格选型。流程、层级、协同等关系仅被铺成行列而未表达时判为待改；等大卡片和无边线网格按同一标准检查。判据、例外及逐页记录见[内容设计](references/content-led-design.md)。
 - 复核全稿表格与重复结构：保留确需比较、映射和核对的页面；重复结构例外须注明页码、共同维度与逐页适用理由。重点页研究不替代其他页选型；只有换色、删边线、换列数不能算结构改善。模块识别需要图标时采用轻量开放布局，图标数量服从当前要求。
+- 正文必须检查是否需要轻量视觉辅助：识别模块可用简单原生图标，分组或阅读节奏可用细分隔线，结论或输出可用底部浅色矩形。不把“少装饰”解释为删除这些有效元素；按作用选择，不要求每页都有。对象使用主题色、保留可编辑性，不挤占主要信息，详见完整规范3.5A。
 - 整稿全部界面截图必须采用同一线条母样；局部任务只统一授权范围内截图：默认1.25磅、accent1主题主色至透明的线性渐变。用户已有明确截图母样时先提取并统一传播；照片、Logo、图标不套用截图线条。母样与验收见完整规范9.4.4和`assets/ui-screenshot-border.xml`。
 - 上述强制项必须分别留下实际检查结果，不能用结构审计通过代替内容、层级、构图、截图可读性和PowerPoint视觉验收。
 
@@ -66,7 +67,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 ## Non-negotiable rules
 
 - 新增或生成的插图、配图、图标默认全部采用2D平面风格，不使用3D、等距立体、拟物材质或厚重立体效果；只有用户明确要求时才采用3D。通过构图、字号层级、色彩、留白和关系表达丰富页面。权威模板已有的3D品牌图形、真实照片和产品截图保持原貌，不因本规则擅自重绘或删除。素材选择、imagegen提示词与交付视觉检查均执行此边界。
-- Use integer font sizes. Use 14 pt for ordinary body text. Never go below 12 pt; use 12 pt sparingly.
+- Use integer font sizes. Use 14 pt for ordinary body text; reduce oversized 16–18 pt descriptions to 14 pt where helpful. Dense secondary descriptions and annotations may use 12 pt after reading-size review; never go below 12 pt or flatten the semantic hierarchy. Follow reference section 5.3.
 - Use Microsoft YaHei for Chinese and Arial for Latin text and numbers, or use theme fonts that resolve to those typefaces in the 彩讯科技 theme.
 - Put text directly inside rectangles, rounded rectangles, cards, and labels. Do not overlay a separate text box on a shape that already serves as the text container.
 - Use straight-corner rectangles for the outer frame of a page section, large module, grouped area, or overall content container.
@@ -81,11 +82,11 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 - Derive tints, shades, transparency, gradients, borders, icons, charts, and tables from theme slots so they remain theme-linked.
 - Allow original colors only for logos, photos, screenshots, customer/co-brand assets, or another explicitly required standard.
 - Prefer native theme-linked PowerPoint shapes or recolorable vector icons for generic icons. Fixed-color PNG/SVG artwork is an explicit media exception and must not be described as theme-linked.
-- When content does not fit at 14 pt, edit, enlarge, reorganize, or split the slide. Do not solve density by shrinking below 12 pt.
+- When content does not fit, preserve confirmed information, adjust area and spacing, and choose a consistent font size by semantic level under section 5.3. Split only when necessary for readability or relationships; do not shrink below 12 pt or enlarge type to manufacture a sparse page.
 
 ## Resources
 
-- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.12 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
+- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.13 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
 - [版式研究与原生重构](references/imagegen-layout-reconstruction.md)：重点页构图探索、保留比例与配色、语义图标、原生实施和局部保护验收。
 - [references/reference-slide-reconstruction.md](references/reference-slide-reconstruction.md): conditional workflow for screenshots, flattened slides, SVG sources, icons, and generated visual assets.
 - [assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx](assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx): primary 彩讯 2026 template; ordinary content layout is `2_内容1` (`slideLayout3`).
