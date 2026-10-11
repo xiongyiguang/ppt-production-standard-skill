@@ -1,9 +1,9 @@
-param(
+﻿param(
     [Parameter(Mandatory = $true)] [string] $InputPptx,
     [Parameter(Mandatory = $true)] [string] $OutputJson
 )
 $ErrorActionPreference = 'Stop'
-$inputPath = (Resolve-Path -LiteralPath $InputPptx).Path
+$inputPath = (Resolve-Path -LiteralPath $InputPptx).ProviderPath
 $outputPath = [IO.Path]::GetFullPath($OutputJson)
 if (Test-Path -LiteralPath $outputPath) { throw 'Use a new evidence filename; output already exists.' }
 $beforeHash = (Get-FileHash -LiteralPath $inputPath -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -36,21 +36,24 @@ function Read-Shape($shape, [int] $page) {
         }
     } else { Read-Text $shape $key }
 }
+$localDir = Join-Path ([IO.Path]::GetTempPath()) ('ppt-standard-measure-' + [Guid]::NewGuid().ToString('N'))
+$localFile = Join-Path $localDir 'working-copy.pptx'
 $app = $null
 $deck = $null
 try {
     $app = New-Object -ComObject PowerPoint.Application
-    # Refuse an already-open target; never close a user's live deck.
-    foreach ($openDeck in $app.Presentations) {
-        if ($openDeck.FullName -eq $inputPath) { throw 'Input is already open; close it or measure a saved working copy.' }
-    }
-    $deck = $app.Presentations.Open($inputPath, -1, 0, 0)
+    [IO.Directory]::CreateDirectory($localDir) | Out-Null
+    Copy-Item -LiteralPath $inputPath -Destination $localFile
+    if ((Get-FileHash -LiteralPath $localFile -Algorithm SHA256).Hash.ToLowerInvariant() -ne $beforeHash) { throw 'Source changed while making the independent copy.' }
+    # Parallels caller must use --current-user; local copy + visible read-only window.
+    $deck = $app.Presentations.Open($localFile, -1, 0, -1)
     foreach ($slide in $deck.Slides) {
         foreach ($shape in $slide.Shapes) { Read-Shape $shape $slide.SlideIndex }
     }
     $afterHash = (Get-FileHash -LiteralPath $inputPath -Algorithm SHA256).Hash.ToLowerInvariant()
     if ($beforeHash -ne $afterHash) { throw 'Input changed during measurement; rerun on a stable file.' }
-    $report = @{sha256=$beforeHash; source='PowerPoint.TextRange'; measurements=$measurements; errors=@($errors.ToArray())}
+    $report = @{sha256=$beforeHash; source='PowerPoint.TextRange'; powerpointVersion=$app.Version; slideCount=$deck.Slides.Count;
+               openMode=@{readOnly=$true; withWindow=$true; localWorkingCopy=$true}; measurements=$measurements; errors=@($errors.ToArray())}
     $json = $report | ConvertTo-Json -Depth 12
     $stream = [IO.File]::Open($outputPath, [IO.FileMode]::CreateNew)
     try {
@@ -59,7 +62,10 @@ try {
     } finally { $stream.Dispose() }
     Write-Output $outputPath
 } finally {
-    if ($null -ne $deck) { $deck.Close(); [void][Runtime.InteropServices.Marshal]::ReleaseComObject($deck) }
+    if ($null -ne $deck) { $deck.Saved = -1; $deck.Close(); [void][Runtime.InteropServices.Marshal]::ReleaseComObject($deck) }
     # Do not Quit: COM may attach to the user's existing PowerPoint process.
     if ($null -ne $app) { [void][Runtime.InteropServices.Marshal]::ReleaseComObject($app) }
+    # Remove only this invocation's generated local copy.
+    if (Test-Path -LiteralPath $localFile) { Remove-Item -LiteralPath $localFile -Force }
+    if (Test-Path -LiteralPath $localDir) { Remove-Item -LiteralPath $localDir }
 }

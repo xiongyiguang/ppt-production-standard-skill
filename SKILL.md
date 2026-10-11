@@ -25,6 +25,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 
 - Python 结构审计、文字扫描和 SVG 工具可在 macOS 使用；先通过 `load_workspace_dependencies` 获取应用捆绑的 Python/依赖，不假定系统 `python` 或 `python3` 已配置。
 - `render_pptx_powerpoint.ps1`、`measure_text_layout.ps1` 是 Windows PowerPoint COM 工具，不在 Mac 上执行，也不以安装 PowerShell 视作已获得 COM 支持。
+- 在macOS＋Parallels Windows环境检查PPT时，默认使用当前Windows登录用户执行（`prlctl exec <VM> --current-user`），在Windows本地独立副本上以可见窗口只读打开（`Presentations.Open(copy, -1, 0, -1)`）；不要先重复尝试无用户指定的后台打开。渲染和文字测量采用同一配置，执行前读取[PowerPoint打开与检查](references/powerpoint-open-validation.md)。失败不直接归因为物理内存不足，不自动重启用户应用或虚拟机。
 - PPTX 制作与预览配合当前可用的 `presentations` 技能。第三方渲染只能作为辅助证据；要求的 PowerPoint 实际打开、自动折行、行距、组合操作和全页视觉验收须在实际安装的 PowerPoint 中验证：可用 Mac 原生版本，也可用 Windows 虚拟机内版本。先核实安装位置、共享路径和自动化能力，不假定 macOS 已安装 Office。缺少应用时明确待验收，不降低原标准。
 - 模板、Logo、主题与固定几何保留原样。先核对 Mac 字体可用性；微软雅黑等字体缺失时说明影响并确认替代，不擅自更换或从旧 Windows 复制系统字体。
 
@@ -84,7 +85,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 
 ## Resources
 
-- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.11 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
+- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.12 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
 - [版式研究与原生重构](references/imagegen-layout-reconstruction.md)：重点页构图探索、保留比例与配色、语义图标、原生实施和局部保护验收。
 - [references/reference-slide-reconstruction.md](references/reference-slide-reconstruction.md): conditional workflow for screenshots, flattened slides, SVG sources, icons, and generated visual assets.
 - [assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx](assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx): primary 彩讯 2026 template; ordinary content layout is `2_内容1` (`slideLayout3`).
