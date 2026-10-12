@@ -19,6 +19,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 - 每个授权正文页必须先判断主要关系、再选主体结构，并记录选型理由；采用表格须说明核对对象、共同字段或对应维度及逐项阅读需求。“名称＋说明”、缺少数值或制作方便均不足以支持表格选型。流程、层级、协同等关系仅被铺成行列而未表达时判为待改；等大卡片和无边线网格按同一标准检查。判据、例外及逐页记录见[内容设计](references/content-led-design.md)。
 - 复核全稿表格与重复结构：保留确需比较、映射和核对的页面；重复结构例外须注明页码、共同维度与逐页适用理由。重点页研究不替代其他页选型；只有换色、删边线、换列数不能算结构改善。模块识别需要图标时采用轻量开放布局，图标数量服从当前要求。
 - 正文必须检查是否需要轻量视觉辅助：识别模块可用简单原生图标，分组或阅读节奏可用细分隔线，结论或输出可用底部浅色矩形。不把“少装饰”解释为删除这些有效元素；按作用选择，不要求每页都有。对象使用主题色、保留可编辑性，不挤占主要信息，详见完整规范3.5A。
+- 正文视觉默认参考用户认可的手工稿观感：信息充实、分区清楚，采用协调的浅底、细框、轻渐变标题条、短标签、编号、分隔线及适量图标，按需要用结论带收口。新建、整体优化和授权页重构读取[正文视觉风格与密度](references/visual-style-density.md)，把元素搭配和密度参照落实到画面；只借鉴视觉，不搬用参考项目的方案内容。当前模板和用户指定风格优先。
 - 整稿全部界面截图必须采用同一线条母样；局部任务只统一授权范围内截图：默认1.25磅、accent1主题主色至透明的线性渐变。用户已有明确截图母样时先提取并统一传播；照片、Logo、图标不套用截图线条。母样与验收见完整规范9.4.4和`assets/ui-screenshot-border.xml`。
 - 上述强制项必须分别留下实际检查结果，不能用结构审计通过代替内容、层级、构图、截图可读性和PowerPoint视觉验收。
 
@@ -38,6 +39,8 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 4. 仅做审查时不改文件；局部修订服从用户要求的范围，不自动扩展成全文内容重写或品牌迁移。
 
 ## 规范按需读取
+
+- 正文视觉制作与复核：读[正文视觉风格与密度](references/visual-style-density.md)，按当前品牌映射元素组合、层级和充实程度；截图内部信息计入密度。图形细节选择执行完整规范7.1，历史小字号不成为新稿默认值。
 
 - 新建或整体改版内容页：按 [内容驱动的设计判断](references/content-led-design.md) 明确本页判断、关系、重点与条件后自由构图，并执行其中的缩略图与实际阅读尺寸设计复核。
 - 每页必须作结构判断，但无需每页套用某种命名方法。售前常见的职责交接、需求映射、业务对象、架构调用及截图讲解，按[售前关系画法](references/presales-relationship-layouts.md)只读相关小节；其他关系按[12类关系表达方法](references/relationship-patterns.md)选读，不把方法当固定模板。
@@ -72,6 +75,7 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 - Put text directly inside rectangles, rounded rectangles, cards, and labels. Do not overlay a separate text box on a shape that already serves as the text container.
 - Use straight-corner rectangles for the outer frame of a page section, large module, grouped area, or overall content container.
 - Default to straight-corner rectangles for both outer and inner containers, including cards, title bars, content backgrounds, labels and process nodes. Use rounded rectangles sparingly only for a clear semantic need or explicit user request; they are not a default beautification style.
+- The approved visual-reference approach permits consistent light rounding for short category/result labels or section-heading strips when it helps recognition; document that purpose under section 7.1. Simple cut-corner heading strips and circular number markers are also available. Keep large outer containers straight and use theme-linked light gradients/shadows selectively under the visual-style guide.
 - Check both outer and inner shapes against the straight-corner default; an outer straight frame alone does not establish compliance. Verify a reason for rounded exceptions without inventing a numeric quota. Preserve the original fixed geometry of authoritative templates; do not batch-convert their existing rounded shapes.
 - Never change the bundled templates' master, layout, theme, handout-master, or notes-master parts. If a master object uses a fixed color, legacy font, fractional size, or other inherited setting, preserve it and report it as a template exception; do not “repair” it.
 - Use standalone text boxes only for genuinely independent titles, labels, captions, footers, and connector annotations.
@@ -86,7 +90,9 @@ description: "为 PPTX/POTX 制作、改版与审查提供模板、文字、对�
 
 ## Resources
 
-- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.13 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
+- [正文视觉风格与密度](references/visual-style-density.md)：用户认可的页面元素搭配、轻重层级、主体充实程度及视觉复核；只沉淀视觉经验，不固化原方案内容。
+
+- [references/ppt-production-standard.md](references/ppt-production-standard.md): complete V1.14 production and acceptance standard. For native arrows/connectors, apply section 7.7 before editing and during rendered QA; use one deck-wide connector master and inspect shaft/head continuity at 100% and 50%.
 - [版式研究与原生重构](references/imagegen-layout-reconstruction.md)：重点页构图探索、保留比例与配色、语义图标、原生实施和局部保护验收。
 - [references/reference-slide-reconstruction.md](references/reference-slide-reconstruction.md): conditional workflow for screenshots, flattened slides, SVG sources, icons, and generated visual assets.
 - [assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx](assets/彩讯股份2026版-20260725-封面页、内容页、过渡页、结尾页模板.pptx): primary 彩讯 2026 template; ordinary content layout is `2_内容1` (`slideLayout3`).

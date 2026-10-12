@@ -14,6 +14,8 @@
 6. Build a slide-by-slide content map before editing the file. Review every page for concrete content, semantic hierarchy and effective information density. Include brand-matched cover, chapter transition pages and section-aware body titles. Select key pages for actual imagegen layout exploration under content-led-design.md, then follow imagegen-layout-reconstruction.md to retain useful proportions, color roles and semantic icons while rebuilding native objects.
 7. Apply the complete reference standard, then run the audit and rendered QA.
 
+For body-slide visual production, read [visual style and density](visual-style-density.md). Use the approved palette roles, pale divisions, thin frames, light gradient heading strips, short labels, number markers and selective icons as a coordinated visual reference. Adapt to the current brand, content and reading context; do not import the reference project's solution content. Include screenshot-internal information when judging density.
+
 ### Normalize or revise an existing presentation
 
 1. Resolve one authoritative template as the destination visual system, even when the source deck uses another master.
@@ -93,3 +95,5 @@ Replace the illustrative `--content-slides "2-8"` range with the actual ordinary
 16. For authorized body-slide creation or redesign, execute reference sections 3.5A, 3.6 and 5.3: judge sparse/appropriate/crowded density with concrete evidence, preserve necessary detail and approved manual edits, check readable semantic-level font adjustments, solid outer layer boundaries, and the purpose of simple native icons, separators and pale result/grouping backgrounds. These aids may be used without requiring a separate raster-polish workflow; do not add them to every page or alter fixed template furniture. Documentation alone does not establish visual acceptance.
 
 17. After delivering a newly created, extended or revised PPT file, follow [the two optional follow-up choices](../SKILL.md#交付后提示两个优化选择) using plain labels and explaining editability. This optional reminder does not block delivery or start another workflow; omit it when the user declines follow-up suggestions.
+
+18. For authorized body-slide creation or redesign, inspect the actual image under [visual style and density](visual-style-density.md): coordinated selected elements, consistent typography and line language, clear pale divisions and thin borders, compact grouping, sufficiently occupied main area and readable detail. Preserve useful light gradients, labels, numbering and conclusion bands when appropriate. Check screenshot density separately from external text; do not copy historic small fonts or infer visual acceptance from a file/format check.
